@@ -54,7 +54,7 @@ class Notify {
 
     //build the pending intent that will start the appropriate activity
     PendingIntent pendingIntent = PendingIntent.getActivity(context,
-            0, intent, 0);
+            0, intent, PendingIntent.FLAG_IMMUTABLE);
 
     //build the notification
     Builder notificationCompat = new Builder(context);
