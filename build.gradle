@@ -2,21 +2,20 @@
 
 buildscript {
     repositories {
-        jcenter()
+        google()
         mavenCentral()
     }
     dependencies {
-	    classpath 'com.android.tools.build:gradle:2.2.3'
+	    classpath 'com.android.tools.build:gradle:7.0.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
-ext{
+ext {
 
-    compileSdkVersion = 24
-    buildToolsVersion = '23.0.3'
-
+    compileSdkVersion = 31
+    buildToolsVersion = '30.0.3'
 
     group = 'org.eclipse.paho'
 
@@ -26,7 +25,7 @@ ext{
     serviceArchivesBaseName = 'org.eclipse.paho.android.service'
     serviceVersion = '1.1.1'
 
-    clientVersion = '1.1.0'
+    clientVersion = '1.2.5'
 
     mavenUrl = "https://repo.eclipse.org/content/repositories/paho-releases/"
 
@@ -57,7 +56,8 @@ println "SDK dir: $sdkDir"
 allprojects {
 
     repositories {
-        jcenter()
+        google()
+        mavenCentral()
         maven {
             url "file://$sdkDir/extras/android/m2repository/"
         }
