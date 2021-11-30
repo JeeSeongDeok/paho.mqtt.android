@@ -25,7 +25,7 @@ repositories {
 dependencies {
     implementation project(':org.eclipse.paho.android.service')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-//    implementation "org.eclipse.paho:org.eclipse.paho.client.mqttv3:${rootProject.ext.clientVersion}"
+    implementation "org.eclipse.paho:org.eclipse.paho.client.mqttv3:${rootProject.ext.clientVersion}"
     implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
 }
 
