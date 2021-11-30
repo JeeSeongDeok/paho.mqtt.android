@@ -119,7 +119,7 @@ publishing {
 //}
 
 assemble.doLast {
-    renameReleaseAAR.execute()
+    dependsOn(renameReleaseAAR)
 }
 
 //clean.doFirst {
