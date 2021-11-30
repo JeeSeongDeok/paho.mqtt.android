@@ -15,6 +15,9 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
 }
 
 repositories {
@@ -118,9 +121,7 @@ publishing {
 //    copyLibs.execute()
 //}
 
-assemble.doLast {
-    dependsOn(renameReleaseAAR)
-}
+tasks.assemble.dependsOn(renameReleaseAAR)
 
 //clean.doFirst {
 //    delete 'libs'
