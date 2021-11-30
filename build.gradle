@@ -50,8 +50,6 @@ def androidHomeIsDefined = androidHome?.trim()
 
 def sdkDir = androidHomeIsDefined ? androidHome : getSdkDirFromLocalProperties()
 
-println "SDK dir: $sdkDir"
-
 
 allprojects {
 

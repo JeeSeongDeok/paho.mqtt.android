@@ -28,6 +28,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 /**
@@ -66,13 +67,13 @@ class AlarmPingSender implements MqttPingSender {
 		this.alarmReceiver = new AlarmReceiver();
 	}
 
+
 	@Override
 	public void start() {
 		String action = MqttServiceConstants.PING_SENDER
 				+ comms.getClient().getClientId();
 		Log.d(TAG, "Register alarmreceiver to MqttService"+ action);
 		service.registerReceiver(alarmReceiver, new IntentFilter(action));
-
 		pendingIntent = PendingIntent.getBroadcast(service, 0, new Intent(
 				action), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
