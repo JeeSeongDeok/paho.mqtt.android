@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
+configurations.implementation.canBeResolved = true;
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
