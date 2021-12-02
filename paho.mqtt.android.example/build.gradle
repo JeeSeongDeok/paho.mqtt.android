@@ -11,12 +11,12 @@ android {
         versionCode 1
         versionName "1.0"
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
-//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 //    dexOptions {
 //        preDexLibraries = false
 //    }
@@ -31,7 +31,7 @@ repositories {
 
 
 dependencies {
-//    implementation fileTree(dir: 'libs', excludes: ["org.eclipse.paho.client.mqttv3-${rootProject.ext.clientVersion}.jar"], include: '*.jar')
+    implementation fileTree(dir: 'libs', excludes: ["org.eclipse.paho.client.mqttv3-${rootProject.ext.clientVersion}.jar"], include: '*.jar')
 //    testImplementation 'junit:junit:4.12'
     implementation project(':org.eclipse.paho.android.service')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
