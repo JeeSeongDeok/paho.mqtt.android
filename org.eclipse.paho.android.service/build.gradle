@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-configurations.implementation.canBeResolved = true
+//configurations.implementation.canBeResolved = true
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -131,8 +131,9 @@ publishing {
 task deleteLibs {
     delete 'libs'
 }
-
-tasks.clean.dependsOn([deleteLibs, copyLibs])
+//
+//tasks.clean.dependsOn([deleteLibs, copyLibs])
+tasks.clean.dependsOn(deleteLibs)
 
 tasks.assemble.dependsOn(renameReleaseAAR)
 
