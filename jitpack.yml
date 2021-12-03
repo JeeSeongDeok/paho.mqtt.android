@@ -1,0 +1,22 @@
+language: android
+jdk: oraclejdk11
+android:
+  components:
+    - tools
+    - build-tools-30.0.3
+    - android-31
+    - extra-android-support
+    - extra
+
+#before_script:
+#  - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
+#  - emulator -avd test -no-audio -no-window &
+#  - android-wait-for-emulator
+#  - adb shell input keyevent 82 &
+
+install:
+  - ./gradlew clean
+  - ./gradlew org.eclipse.paho.android.sample:assemble paho.mqtt.android.example:assemble
+  - ./gradlew org.eclipse.paho.android.service:assemble
+  - find . -name "*.aar"
+#  - ./gradlew org.eclipse.paho.android.service:connectedCheck
