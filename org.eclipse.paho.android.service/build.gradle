@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-//configurations.implementation.canBeResolved = true
+configurations.implementation.canBeResolved = true
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -43,7 +43,7 @@ android.libraryVariants.all { variant ->
         options.links("http://d.android.com/reference/")
         exclude '**/BuildConfig*'
         exclude '**/R**'
-        options.linkSource false
+//        options.linkSource false
         failOnError false
     }
 }
@@ -64,14 +64,17 @@ task("generateSourcesJar", type: Jar) {
 
 // Copy the Paho Java client into the libs directory to bundle it with the AAR
 task("copyLibs", type: Copy) {
-    println "Copying MQTT Jar into libs directory"
     from configurations.implementation
     into 'libs'
     include 'org.eclipse.paho*'
+
+    doLast {
+        println "Copying MQTT Jar into libs directory"
+    }
 }
 
 // Renames the Release AAR file to a maven convention
-task("renameReleaseAAR", type: Copy) {
+task("renameReleaseAAR", type: Copy, dependsOn: ['bundleDebugAar', 'copyLibs']) {
     from("$buildDir/outputs/aar")
     into("$buildDir/outputs/aar/")
     include('org.eclipse.paho.android.service-debug.aar')
@@ -118,7 +121,6 @@ publishing {
     }
 }
 
-
 //task debug {
 //    doLast {
 //        configurations.implementation.each { println it}
@@ -132,7 +134,6 @@ task deleteLibs {
     delete 'libs'
 }
 //
-//tasks.clean.dependsOn([deleteLibs, copyLibs])
 tasks.clean.dependsOn(deleteLibs)
 
 tasks.assemble.dependsOn(renameReleaseAAR)
