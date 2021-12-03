@@ -18,5 +18,5 @@ install:
   - ./gradlew clean
   - ./gradlew org.eclipse.paho.android.sample:assemble paho.mqtt.android.example:assemble
   - ./gradlew org.eclipse.paho.android.service:assemble
-  - find . -name "*.aar"
+  - ./gradlew org.eclipse.paho.android.service:publishToMavenLocal
 #  - ./gradlew org.eclipse.paho.android.service:connectedCheck
