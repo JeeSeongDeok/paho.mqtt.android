@@ -32,7 +32,7 @@ android.libraryVariants.all { variant ->
         doFirst {
             ext.androidJar =
                     "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-            classpath = files(variant.javaCompileProvider.get().classpath.files) + files(ext.androidJar) + files("$buildDir/intermediates/classes/release")
+            classpath = files(variant.javaCompileProvider.get().classpath.files) + files(ext.androidJar)
         }
         source = variant.sourceSets.collect { it.java.sourceFiles }.inject { m, i -> m + i }
         title = "$name $version API"
@@ -83,7 +83,7 @@ task("renameReleaseAAR", type: Copy, dependsOn: ['bundleDebugAar', 'copyLibs']) 
 
 // Generate Plain Jar Version of library (good for legacy users)
 task("generateLibraryJar", type: Jar) {
-    from("$buildDir/intermediates/classes/release")
+    from("$buildDir/intermediates/javac/release/classes")
 }
 
 // Generate Javadoc
